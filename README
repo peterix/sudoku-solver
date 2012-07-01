@@ -1,0 +1,65 @@
+sudoku-solver
+program pro kontrolu, reseni, generovani a hrani sudoku. prepinace a pouziti viz help (sudoku-solver bez parametru)
+
+sudoku.cpp/.h - trida obalujici funkcnost sudoku - da se 'pretransplantovat' kamkoliv
+main.cpp - vstupni bod programu, zpracovani parametru
+interactive.cpp/.h - primitivni interaktivni uzivatelske rozhrani pro hrani sudoku
+
+kontrola sudoku / filtr - kontorluje jestli je sudoku spravne zadano. vpodstate jej vyresi a vyplivne jestli se to povedlo nebo ne
+generovani - vyresi prazdne sudoku rekurzivni metodou. doplnuje nahodne cislice podle pravidel
+reseni - bere vstupni soubor a vyplivne reseni
+interaktivni rezim - takova prikazova radka. prijima prikazy, ktere se daji vypsat pomoci 'help'
+
+Ukazka interaktivniho rezimu:
+
+
+prikaz >a                                                                                                                                            
++--+--+--|--+--+--|--+--+--+                                                                                                                         
+|O<|. |. |1.|5.|. |. |7.|. |<--                                                                                                                      
++--+--+--|--+--+--|--+--+--+                                                                                                                         
+|1.|. |6.|. |. |. |8.|2.|. |                                                                                                                         
++--+--+--|--+--+--|--+--+--+                                                                                                                         
+|3.|. |. |8.|6.|. |. |4.|. |                                                                                                                         
+---------+--------+---------                                                                                                                         
+|9.|. |. |4.|. |. |5.|6.|7.|                                                                                                                         
++--+--+--|--+--+--|--+--+--+                                                                                                                         
+|. |. |4.|7.|. |8.|3.|. |. |                                                                                                                         
++--+--+--|--+--+--|--+--+--+                                                                                                                         
+|7.|3.|2.|. |. |6.|. |. |4.|                                                                                                                         
+---------+--------+---------                                                                                                                         
+|. |4.|. |. |8.|1.|. |. |9.|                                                                                                                         
++--+--+--|--+--+--|--+--+--+                                                                                                                         
+|. |1.|7.|. |. |. |2.|. |8.|
++--+--+--|--+--+--|--+--+--+
+|. |5.|. |. |3.|7.|. |. |. |
++--+--+--|--+--+--|--+--+--+
+ ^
+prikaz >
+
+O< a sipky mimo pole ukazuji na aktualni pozici. te se da menit pomoci prikazu a,s,d,f
+zadavani cisel probiha pomoci cisel :)
+solve - vyresi ze stavajiciho stavu, pokud je to mozne
+rsolve - resetuje a vyresi (zarucene)
+reset - vymaze vsechny uzivatelem nebo jinak doplnena cisla
+exit - ukonceni
+print - znovuvypsani stavu
+x,0,. - smazani aktualniho policka, pokud to jde
+
+Kompilace:
+  pod linuxem a s nainstalovanym cmake:
+    cmake .
+    make
+  jinde:
+    to uz je na tobe co s tim udelas ~_~
+    melo by stacit naimportovat .cpp soubory do projektu v tvym IDE, at uz je jaky chce :)
+
+Spousteni:
+  Parametry:
+  i - interaktivni hra. pouzijte pokud nechcete aby program okamzite vyresil sudoku
+  f - filtr - pouze kontroluje spravnost vstupu
+  g - generator - pouze generuje nahodne sudoku
+  s - vyresi sudoku - vychozi rezim
+  pri uvedeni kombinace techto parametru je chovani programu nedefinovano
+  Format parametru:
+  Parametry se zapisuji tak, ze pred ne uvedete pomlcku. Bez uvedeni pomlcky jsou brany jako nazvy souboru.
+  Prvni nazev souboru se bere jeko vstupni. pokud neni uveden, program vygeneruje nahodne sudoku.
